@@ -3,6 +3,7 @@ class Product:
     description: str
     price: int
     quantity: int
+
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
