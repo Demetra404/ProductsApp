@@ -1,5 +1,5 @@
-from src.products import Product
 from src.category import Category
+from src.products import Product
 
 if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra",
