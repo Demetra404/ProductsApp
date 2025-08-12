@@ -14,7 +14,7 @@ class Product:
         Product.products.append([self.name, self.description, self.__price, self.quantity])
 
     @classmethod
-    def new_product(cls, dict_products):
+    def new_product(cls, dict_products: dict):
         name = dict_products['name']
         description = dict_products['description']
         price = dict_products['price']
@@ -28,11 +28,11 @@ class Product:
         return cls(name, description, price, quantity)
 
     @property
-    def price(self):
+    def price(self) -> float:
         return self.__price
 
     @price.setter
-    def price(self, new_price):
+    def price(self, new_price: int):
         if new_price <= 0:
             print('Цена не должна быть нулевая или отрицательная')
             return
