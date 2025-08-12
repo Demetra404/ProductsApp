@@ -13,18 +13,21 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        """Доп к заданию 3 (кривовато)))"""
         if Product.products is []:
             Product.products.append([self.name, self.description, self.__price, self.quantity])
         else:
             for product in Product.products:
-                if product[0] == name:
-                    product[3] = quantity
+                if product[0] == self.name:
+                    product[3] += quantity
+                    self.quantity = product[3]
+                    if price > product[2]:
+                        product[2] = price
+                        self.__price = product[2]
+                    else:
+                        self.__price = product[2]
                     return
             Product.products.append([self.name, self.description, self.__price, self.quantity])
-
-
-
-
 
     @classmethod
     def new_product(cls, dict_products: dict):
@@ -32,12 +35,6 @@ class Product:
         description = dict_products['description']
         price = dict_products['price']
         quantity = dict_products['quantity']
-        for product_new in Product.products:
-            if product_new[0] == name:
-                product_new[3] += quantity
-                if price > product_new[2]:
-                     product_new[2] = price
-            return cls(product_new[0], product_new[1], product_new[2], product_new[3])
         return cls(name, description, price, quantity)
 
     @property

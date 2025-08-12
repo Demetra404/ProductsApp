@@ -24,8 +24,6 @@ def test_new_category(second_category):
     assert len(second_category.products_list) == 2
     assert second_category.product_count == 2
     assert second_category.category_count == 2
-
-def test_products(second_category):
     assert second_category.products == ('Xiaomi POCO, 15000 руб. Остаток: 100 шт.\n'
                                          'Iphone 16, 100000 руб. Остаток: 13 шт.\n')
 
