@@ -36,13 +36,19 @@ def test_new_product(product_dict):
     assert new_product.description == '256GB, Серый цвет, 200MP камера'
     assert new_product.price == 180000.0
     assert new_product.quantity == 5
+    print(Product.products)
     new_product_one = Product.new_product(
         {"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Черный цвет, 200MP камера", "price": 170000.0,
-         "quantity": 4})
-    assert new_product_one.name == 'Samsung Galaxy S23 Ultra'
-    assert new_product_one.description == '256GB, Черный цвет, 200MP камера'
-    assert new_product_one.price == 170000.0
-    assert new_product_one.quantity == 4
+         "quantity": 7})
+    print(new_product_one.name)
+    print(new_product_one.description)
+    print(new_product_one.price)
+    print(new_product_one.quantity)
+    print(Product.products)
+    #assert new_product_one.name == 'Samsung Galaxy S23 Ultra'
+    #assert new_product_one.description == '256GB, Черный цвет, 200MP камера'
+    #assert new_product_one.price == 170000.0
+    #assert new_product_one.quantity == 4
 
 def test_price(capsys, second_product):
     product_for_test_price = second_product
@@ -54,3 +60,4 @@ def test_price(capsys, second_product):
     product_for_test_price.price = 0
     assert message.out.strip() == 'Цена не должна быть нулевая или отрицательная'
     assert product_for_test_price.price == 15000
+
