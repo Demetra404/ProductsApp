@@ -1,10 +1,11 @@
 from typing import Any, Union
+
 from src.products import Product
+
 
 class Category:
     name: str
     description: str
-    products: list
     category_count: int = 0
     product_count: int = 0
 
@@ -29,5 +30,3 @@ class Category:
     @property
     def products_list(self):
         return self.__products
-
-

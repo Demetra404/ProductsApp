@@ -1,12 +1,11 @@
-from itertools import product
+from typing import Self
 
 
 class Product:
     name: str
     description: str
-    price: float
     quantity: int
-    products = []
+    products: list = []
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
@@ -30,7 +29,7 @@ class Product:
             Product.products.append([self.name, self.description, self.__price, self.quantity])
 
     @classmethod
-    def new_product(cls, dict_products: dict):
+    def new_product(cls, dict_products: dict) -> Self:
         name = dict_products['name']
         description = dict_products['description']
         price = dict_products['price']
