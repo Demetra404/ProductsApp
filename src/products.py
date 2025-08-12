@@ -1,11 +1,44 @@
+
 class Product:
     name: str
     description: str
     price: float
     quantity: int
+    products = []
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
+        Product.products.append([self.name, self.description, self.__price, self.quantity])
+
+    @classmethod
+    def new_product(cls, dict_products):
+        name = dict_products['name']
+        description = dict_products['description']
+        price = dict_products['price']
+        quantity = dict_products['quantity']
+        for product in Product.products:
+            if product[0] == name:
+                quantity += product[3]
+                if price < product[2]:
+                    price = product[2]
+            return cls(name, description, price, quantity)
+        return cls(name, description, price, quantity)
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, new_price):
+        if new_price <= 0:
+            print('Цена не должна быть нулевая или отрицательная')
+            return
+        elif new_price < self.__price:
+            user_answer = input()
+            if user_answer == 'y':
+                self.__price = new_price
+            elif user_answer == 'n':
+                return
