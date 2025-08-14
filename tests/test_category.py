@@ -36,6 +36,6 @@ def test_add_product(first_category):
 
 def test_str_category(second_category, first_category):
     assert str(first_category) == 'Телевизоры, количество продуктов: 0 шт.\n'
-    assert str(second_category) == 'Смартфоны, количество продуктов: 2 шт.\n'
+    assert str(second_category) == 'Смартфоны, количество продуктов: 113 шт.\n'
 
 
