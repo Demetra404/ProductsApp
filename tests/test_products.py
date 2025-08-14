@@ -66,3 +66,10 @@ def test_price(capsys, second_product):
     assert message.out.strip() == 'Цена не должна быть нулевая или отрицательная'
     assert product_for_test_price.price == 15000
 
+def test_str_product(first_product, second_product):
+    assert str(first_product) == 'Iphone 16, 100000 руб. Остаток: 13 шт.\n'
+    assert str(second_product) == 'Xiaomi POCO, 15000 руб. Остаток: 100 шт.\n'
+
+def test_add_product(first_product, second_product):
+    assert first_product + second_product == 100000 * 13 + 15000 * 100
+
