@@ -34,4 +34,8 @@ def test_add_product(first_category):
     assert first_category.products == ('samsung 16, 65000 руб. Остаток: 50 шт.\n')
     assert len(first_category.products_list) == 1
 
+def test_str_category(second_category, first_category):
+    assert str(first_category) == 'Телевизоры, количество продуктов: 0 шт.\n'
+    assert str(second_category) == 'Смартфоны, количество продуктов: 2 шт.\n'
+
 
