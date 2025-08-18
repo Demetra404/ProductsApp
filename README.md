@@ -15,6 +15,7 @@ git clone https://github.com/Demetra404/ProductsApp.git
 pip install -r requirements.txt
 ```
 ## Использование:
+Сервис работает с категориями товаров и продуктов, реализованы отдельные классы для смартфонов и газона
 
 ## Документация:
 
