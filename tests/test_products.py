@@ -105,4 +105,5 @@ def test_smartphone(first_product_smartphone, first_product_smartphone_one, firs
 
 def test_add(first_product_smartphone, first_product_smartphone_one, first_product_grass, first_product_grass_one):
     assert first_product_smartphone + first_product_smartphone_one == 2580000.0
-    assert first_product_smartphone + first_product_grass == pytest.raises(TypeError)
+    with pytest.raises(TypeError):
+        first_product_smartphone + first_product_grass
