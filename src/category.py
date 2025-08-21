@@ -1,5 +1,6 @@
-from typing import Any, Union
 from abc import ABC, abstractmethod
+from typing import Any, Union
+
 from src.products import Product
 
 
@@ -8,6 +9,7 @@ class BaseFunc(ABC):
     @abstractmethod
     def __str__(self):
         pass
+
 
 class Category(ABC):
     name: str

@@ -1,19 +1,23 @@
 from abc import ABC, abstractmethod
 from typing import Any, Self
 
+
 class BaseProduct(ABC):
 
     @classmethod
     @abstractmethod
-    def new_product(cls, *args, **kwargs):
+    def new_product(cls, *args: Any, **kwargs: Any):
         pass
 
+
 class MixinProduct:
+
     def __init__(self):
         print(repr(self))
 
     def __repr__(self):
         return f'{self.name}, {self.description}, {self.price}, {self.quantity}'
+
 
 class Product(BaseProduct, MixinProduct):
     name: str
@@ -72,7 +76,9 @@ class Product(BaseProduct, MixinProduct):
 
 
 class Smartphone(Product):
-    def __init__(self, name: str, description: str, price: float, quantity: int, efficiency: float, model: str, memory: int, color: str):
+
+    def __init__(self, name: str, description: str, price: float, quantity: int,
+                 efficiency: float, model: str, memory: int, color: str):
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
@@ -81,7 +87,8 @@ class Smartphone(Product):
 
 
 class LawnGrass(Product):
-    def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: str, color: str):
+    def __init__(self, name: str, description: str, price: float, quantity: int,
+                 country: str, germination_period: str, color: str):
         super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
