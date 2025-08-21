@@ -1,9 +1,15 @@
 from typing import Any, Union
-
+from abc import ABC, abstractmethod
 from src.products import Product
 
 
-class Category:
+class BaseFunc(ABC):
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
+class Category(ABC):
     name: str
     description: str
     category_count: int = 0

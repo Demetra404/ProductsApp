@@ -2,7 +2,6 @@ import pytest
 from src.category import Category
 from src.products import Product
 
-
 @pytest.fixture()
 def first_category():
     return Category('Телевизоры','Было и было')

@@ -1,16 +1,32 @@
+from abc import ABC, abstractmethod
 from typing import Any, Self
 
+class BaseProduct(ABC):
 
-class Product:
+    @classmethod
+    @abstractmethod
+    def new_product(cls, *args, **kwargs):
+        pass
+
+class MixinProduct:
+    def __init__(self):
+        print(repr(self))
+
+    def __repr__(self):
+        return f'{self.name}, {self.description}, {self.price}, {self.quantity}'
+
+class Product(BaseProduct, MixinProduct):
     name: str
     description: str
     quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
+
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self) -> str:
         return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.\n'
