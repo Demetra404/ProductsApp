@@ -49,11 +49,11 @@ class Category(ABC):
 
     @property
     def average_price(self) -> Any|None:
-        price = 0
+        price = 0.0
         try:
             for product in self.__products:
                 price += product.price
-            ave_price = price // len(self.__products)
+            ave_price = price / len(self.__products)
             return ave_price
         except ZeroDivisionError:
             return 0
