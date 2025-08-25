@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from sys import prefix
 from typing import Any, Union
 
 from src.products import Product
@@ -45,7 +44,6 @@ class Category(ABC):
                 print('Товар добавлен')
             finally:
                 print('Обработка добавления товара завершена')
-
         else:
             raise TypeError
 
@@ -72,8 +70,4 @@ class Category(ABC):
     def products_list(self) -> list:
         return self.__products
 
-first_category = Category('Смартфоны', 'Всё равно разобьются', [Product('Xiaomi POCO', 'Да нормальный', 15000, 100), Product('Iphone 16', 'ГигаКамера',100000, 13)])
-first_product = Product('samsung 16', 'Да да деньги', 65000, 0)
-first_category.add_product(first_product)
-for product in first_category.products_list:
-    print(product.quantity)
+

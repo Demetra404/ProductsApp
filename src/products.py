@@ -25,8 +25,8 @@ class Product(BaseProduct, MixinProduct):
     quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
-        #if not quantity:
-            #raise ValueError("Товар с нулевым количеством не может быть добавлен")
+        if not quantity:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.name = name
         self.description = description
         self.__price = price
