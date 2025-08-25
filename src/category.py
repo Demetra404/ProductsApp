@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
+from sys import prefix
 from typing import Any, Union
 
 from src.products import Product
+from src.exceptions import QuantityError, Quantity
 
 
 class BaseFunc(ABC):
@@ -32,10 +34,32 @@ class Category(ABC):
 
     def add_product(self, product: "Product") -> None:
         if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
+            quantity = product.quantity
+            try:
+                test = Quantity(quantity)
+                self.__products.append(product)
+                Category.product_count += 1
+            except QuantityError:
+                print('Измените количество товара')
+            else:
+                print('Товар добавлен')
+            finally:
+                print('Обработка добавления товара завершена')
+
         else:
             raise TypeError
+
+    @property
+    def average_price(self):
+        price = 0
+        try:
+            for product in self.__products:
+                price += product.price
+            ave_price = price // len(self.__products)
+            return ave_price
+        except ZeroDivisionError:
+            return 0
+
 
     @property
     def products(self) -> str:
@@ -47,3 +71,9 @@ class Category(ABC):
     @property
     def products_list(self) -> list:
         return self.__products
+
+first_category = Category('Смартфоны', 'Всё равно разобьются', [Product('Xiaomi POCO', 'Да нормальный', 15000, 100), Product('Iphone 16', 'ГигаКамера',100000, 13)])
+first_product = Product('samsung 16', 'Да да деньги', 65000, 0)
+first_category.add_product(first_product)
+for product in first_category.products_list:
+    print(product.quantity)
