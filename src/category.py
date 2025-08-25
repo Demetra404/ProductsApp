@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Any, Union
 
+from src.exceptions import Quantity, QuantityError
 from src.products import Product
-from src.exceptions import QuantityError, Quantity
 
 
 class BaseFunc(ABC):
@@ -35,7 +35,7 @@ class Category(ABC):
         if isinstance(product, Product):
             quantity = product.quantity
             try:
-                test = Quantity(quantity)
+                Quantity(quantity)
                 self.__products.append(product)
                 Category.product_count += 1
             except QuantityError:
@@ -48,7 +48,7 @@ class Category(ABC):
             raise TypeError
 
     @property
-    def average_price(self):
+    def average_price(self) -> Any|None:
         price = 0
         try:
             for product in self.__products:
@@ -57,7 +57,6 @@ class Category(ABC):
             return ave_price
         except ZeroDivisionError:
             return 0
-
 
     @property
     def products(self) -> str:
@@ -69,5 +68,3 @@ class Category(ABC):
     @property
     def products_list(self) -> list:
         return self.__products
-
-

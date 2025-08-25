@@ -1,5 +1,6 @@
 from src.category import BaseFunc
-from src.exceptions import Quantity,QuantityError
+from src.exceptions import Quantity, QuantityError
+
 
 class Order(BaseFunc):
     name: str
@@ -9,7 +10,7 @@ class Order(BaseFunc):
     def __init__(self, name: str, quantity: int, full_price: float):
         self.name = name
         try:
-            test = Quantity(quantity)
+            Quantity(quantity)
             self.quantity = quantity
         except QuantityError:
             print('Измените количество товара')
