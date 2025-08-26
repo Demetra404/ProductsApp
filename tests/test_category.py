@@ -4,7 +4,7 @@ from src.products import Product
 
 @pytest.fixture()
 def first_category():
-    return Category('Телевизоры','Было и было')
+    return Category('Телевизоры','Было и было', [])
 
 @pytest.fixture()
 def second_category():
@@ -40,5 +40,4 @@ def test_add_product(first_category, second_category):
 def test_str_category(second_category, first_category):
     assert str(first_category) == 'Телевизоры, количество продуктов: 0 шт.\n'
     assert str(second_category) == 'Смартфоны, количество продуктов: 113 шт.\n'
-
 

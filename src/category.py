@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Any, Union
 
+from src.exceptions import Quantity, QuantityError
 from src.products import Product
 
 
@@ -32,10 +33,30 @@ class Category(ABC):
 
     def add_product(self, product: "Product") -> None:
         if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
+            quantity = product.quantity
+            try:
+                Quantity(quantity)
+                self.__products.append(product)
+                Category.product_count += 1
+            except QuantityError:
+                print('Измените количество товара')
+            else:
+                print('Товар добавлен')
+            finally:
+                print('Обработка добавления товара завершена')
         else:
             raise TypeError
+
+    @property
+    def average_price(self) -> Any|None:
+        price = 0.0
+        try:
+            for product in self.__products:
+                price += product.price
+            ave_price = price / len(self.__products)
+            return ave_price
+        except ZeroDivisionError:
+            return 0
 
     @property
     def products(self) -> str:
